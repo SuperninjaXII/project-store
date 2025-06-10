@@ -1,26 +1,36 @@
-html {
-    background-color: rgba(27, 38, 54, 1);
-    text-align: center;
-    color: white;
+@font-face {
+  font-family: milo;
+  src: url("./font/MiloWeb W04 BlackIta.ttf");
+}
+
+*,
+:root,
+body {
+  margin: 0;
+  padding: 0;
+
+}
+
+:root {
+  --app-max-width: 100vw;
+  --app-max-height: 100vh;
+
+  --xs-font-size: 9px;
+  --sm-font-size: 12px;
+  --md-font-size: 16px;
+  --lg-font-size: 24px;
+  --xlg-font-size: 48px;
+
+  --border-radius: 12px;
+
+  --space-xs: .9rem;
+  --space-sm: 1.2rem;
+  --space-md: 1.8rem;
+  --space-lg: 2.4rem;
+  --space-xlg: 3.4rem;
 }
 
 body {
-    margin: 0;
-    color: white;
-    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-}
-
-@font-face {
-    font-family: "Nunito";
-    font-style: normal;
-    font-weight: 400;
-    src: local(""),
-    url("assets/fonts/nunito-v16-latin-regular.woff2") format("woff2");
-}
-
-#app {
-    height: 100vh;
-    text-align: center;
+  background: ghostwhite;
+  font-family: system-ui;
 }

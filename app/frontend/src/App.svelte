@@ -1,79 +1,73 @@
 <script>
-  import logo from './assets/images/logo-universal.png'
-  import {Greet} from '../wailsjs/go/main/App.js'
+  import { Greet } from "../wailsjs/go/main/App.js";
+  import Header from "./components/Header.svelte";
 
-  let resultText = "Please enter your name below 👇"
-  let name
+  let resultText = "Please enter your name below 👇";
+  let name;
 
   function greet() {
-    Greet(name).then(result => resultText = result)
+    Greet(name).then((result) => (resultText = result));
   }
 </script>
 
+<Header />
 <main>
-  <img alt="Wails logo" id="logo" src="{logo}">
-  <div class="result" id="result">{resultText}</div>
-  <div class="input-box" id="input">
-    <input autocomplete="off" bind:value={name} class="input" id="name" type="text"/>
-    <button class="btn" on:click={greet}>Greet</button>
-  </div>
+  <section class="stripe-app-container">
+    <div class="heading">
+      <h2>{resultText}</h2>
+    </div>
+       <div class="input-area">
+      <input bind:value={name} placeholder="Your name..." />
+      <button on:click={greet}>Greet Me</button>
+    </div>
+    <div class="card-container">
+      <div class="card-xs">
+        <div class="img"></div>
+        <h5 class="name">app name</h5>
+      </div>
+      <div class="card-xs">
+        <div class="img"></div>
+        <h5 class="name">app name</h5>
+      </div>
+    </div>
+  </section>
 </main>
 
 <style>
+  section {
+    margin-top: var(--space-md);
+    width: var(--app-max-width);
 
-  #logo {
-    display: block;
-    width: 50%;
-    height: 50%;
-    margin: auto;
-    padding: 10% 0 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-origin: content-box;
+    & .heading {
+      margin-bottom: var(--space-sm);
+      margin-top: var(--space-sm);
+      margin-inline: var(--space-xs);
+      font-size: var(--lg-font-size);
+    }
+
+    & .card-container {
+      display: flex;
+    }
   }
 
-  .result {
-    height: 20px;
-    line-height: 20px;
-    margin: 1.5rem auto;
-  }
+  .card-xs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: auto;
+    margin-inline: var(--space-xs);
 
-  .input-box .btn {
-    width: 60px;
-    height: 30px;
-    line-height: 30px;
-    border-radius: 3px;
-    border: none;
-    margin: 0 0 0 20px;
-    padding: 0 8px;
-    cursor: pointer;
-  }
+    & .img {
+      background: black;
+      width: 100px;
+      height: 100px;
+      border-radius: 12px;
+    }
 
-  .input-box .btn:hover {
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-    color: #333333;
+    &.name {
+      font-size: var(--md-font-size);
+    }
   }
-
-  .input-box .input {
-    border: none;
-    border-radius: 3px;
-    outline: none;
-    height: 30px;
-    line-height: 30px;
-    padding: 0 10px;
-    background-color: rgba(240, 240, 240, 1);
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .input-box .input:hover {
-    border: none;
-    background-color: rgba(255, 255, 255, 1);
-  }
-
-  .input-box .input:focus {
-    border: none;
-    background-color: rgba(255, 255, 255, 1);
-  }
-
 </style>
